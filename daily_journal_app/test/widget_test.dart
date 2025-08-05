@@ -23,7 +23,6 @@ class MockAuthProvider extends ChangeNotifier implements AuthProvider {
   @override
   Future<void> signOut() async {}
 
-  // Add other required methods from AuthProvider
   @override
   bool get isLoading => false;
 
@@ -51,6 +50,10 @@ class MockAuthProvider extends ChangeNotifier implements AuthProvider {
 
   @override
   void clearError() {}
+
+  // ✅ MISSING MEMBER ADDED
+  @override
+  Stream<UserModel?> get userStream => Stream.value(_mockUser);
 }
 
 class MockJournalProvider extends ChangeNotifier implements JournalProvider {
@@ -123,7 +126,7 @@ void main() {
       name: 'Test User',
       email: 'test@example.com',
       createdAt: DateTime(2023, 1, 1),
-      lastLoginAt: DateTime(2023, 1, 1), // ✅ Added missing required field
+      lastLoginAt: DateTime(2023, 1, 1),
       profileImageUrl: null,
     );
 
